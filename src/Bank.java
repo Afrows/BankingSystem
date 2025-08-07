@@ -3,15 +3,19 @@ public class Bank {
     private String accountNumber;
     private double accountBalance;
     protected String customerName;
-    private String email;
+    protected String emailAddress;
     private int phoneNumber;
 
-    public Bank(String accountNumber, double accountBalance, String customerName, String email, int phoneNumber) {
+    public Bank(String accountNumber, double accountBalance, String customerName, String emailAddress, int phoneNumber) {
         this.accountNumber = accountNumber;
         this.accountBalance = accountBalance;
         this.customerName = customerName;
-        this.email = email;
+        this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
+    }
+
+    public Bank() {
+
     }
 
     public String getAccountNumber() {
@@ -38,12 +42,12 @@ public class Bank {
         this.customerName = customerName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public int getPhoneNumber() {
