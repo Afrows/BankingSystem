@@ -24,6 +24,9 @@ public class AccountCreation extends Account {
         Scanner accountType = new Scanner(System.in);
 
         do {
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
             System.out.flush();
             System.out.println(border + " \n" +
                     border + " \n" +
@@ -42,6 +45,9 @@ public class AccountCreation extends Account {
                 } else
                     continue;
             } catch (NullPointerException e) {
+                for (int i = 0; i < 50; i++) {
+                    System.out.println();
+                }
                 System.out.flush();
                 System.out.println(border + " \n" +
                         border + " \n" + "Please press 1 for a Current Account or 2 for a Savings Account." +
@@ -56,6 +62,9 @@ public class AccountCreation extends Account {
         Scanner verifyChoiceC = new Scanner(System.in);
 
         do {
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
             System.out.flush();
             System.out.println("""
                     Welcome. Thank you for choosing us as your bank.
@@ -75,6 +84,9 @@ public class AccountCreation extends Account {
                 } else
                     continue;
             } catch (NullPointerException f) {
+                for (int i = 0; i < 50; i++) {
+                    System.out.println();
+                }
                 System.out.flush();
                 System.out.println("Please press either 1 or 2.");
             }
@@ -86,6 +98,9 @@ public class AccountCreation extends Account {
         Scanner verifyChoiceS = new Scanner(System.in);
 
         do {
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
             System.out.flush();
             System.out.println("""
                     Welcome. Thank you for choosing us as your bank.
@@ -105,6 +120,9 @@ public class AccountCreation extends Account {
                 } else
                     continue;
             } catch (NullPointerException f) {
+                for (int i = 0; i < 50; i++) {
+                    System.out.println();
+                }
                 System.out.flush();
                 System.out.println("Please press either 1 or 2.");
             }
@@ -117,6 +135,9 @@ public class AccountCreation extends Account {
         Scanner name = new Scanner(System.in);
 
         do {
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
             System.out.flush();
             System.out.println("Thank you for confirming that you want a " +
                     account + ".\n Please enter your full name: ");
@@ -131,6 +152,9 @@ public class AccountCreation extends Account {
                 } else
                     continue;
             } catch (NullPointerException e) {
+                for (int i = 0; i < 50; i++) {
+                    System.out.println();
+                }
                 System.out.flush();
                 System.out.println("Please enter your full name: ");
             }
@@ -143,6 +167,9 @@ public class AccountCreation extends Account {
         Scanner dob = new Scanner(System.in);
 
         do {
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
             System.out.flush();
             System.out.println("Please enter your date of birth in a DD/MM/YYYY format: ");
             dateOfBirth = dob.nextLine();
@@ -164,6 +191,9 @@ public class AccountCreation extends Account {
         Scanner email = new Scanner(System.in);
 
         do {
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
             System.out.flush();
             System.out.println("Please enter your email address: ");
             emailAddress = email.nextLine();
@@ -185,6 +215,9 @@ public class AccountCreation extends Account {
         Scanner twoFactor = new Scanner(System.in);
 
         do {
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
             System.out.flush();
             System.out.println("""
                     Would you like to enable two factor authentication?
@@ -218,6 +251,9 @@ public class AccountCreation extends Account {
         Scanner makePin = new Scanner(System.in);
 
         do {
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
             System.out.flush();
             System.out.println("Please enter a 6 digit pin: ");
             String newPin = makePin.nextLine();
@@ -239,6 +275,9 @@ public class AccountCreation extends Account {
         Scanner makePassword = new Scanner(System.in);
 
         do {
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
             System.out.flush();
             System.out.println("Please create a password: ");
             password = makePassword.nextLine();
@@ -253,6 +292,4 @@ public class AccountCreation extends Account {
         } while (true);
         return;
     }
-
-
 }
