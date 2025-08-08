@@ -2,8 +2,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        AccountCreation create = new AccountCreation();
+        MainMenu startUp = new MainMenu();
 
-        System.out.println(create);
+        System.out.println(startUp);
     }
 }
