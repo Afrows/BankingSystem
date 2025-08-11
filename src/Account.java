@@ -17,7 +17,6 @@ public class Account extends Bank {
         super();
     }
 
-
     public boolean has2FA() {
         return true;
     }

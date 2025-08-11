@@ -31,7 +31,7 @@ public class MainMenu extends Bank {
 
            try {
                if (choice.equals("1")) {
-                   System.out.println("Under Maintenance");
+                   AccountLogIn log = new AccountLogIn();
                    break;
                }
                else if (choice.equals("2")) {

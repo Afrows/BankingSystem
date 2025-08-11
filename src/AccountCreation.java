@@ -283,6 +283,8 @@ public class AccountCreation extends Account {
             password = makePassword.nextLine();
 
             if (password.length() > 7) {
+                MainMenu main = new MainMenu();
+                System.out.println(main);
                 break;
             }
             else {
