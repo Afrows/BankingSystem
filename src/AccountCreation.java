@@ -6,7 +6,7 @@ public class AccountCreation extends Account {
     private String account;
 
     public AccountCreation(String accountNumber, double accountBalance, String customerName,
-                           String emailAddress, int phoneNumber, String dateOfBirth, String password, String account, int pin, long userID) {
+                           String emailAddress, int phoneNumber, String dateOfBirth, String password, String account, int pin, long userID, boolean pinRestart) {
         super(accountNumber, accountBalance, customerName, emailAddress, phoneNumber, dateOfBirth, password, pin);
         this.userID = userID;
         this.account = account;
@@ -15,6 +15,9 @@ public class AccountCreation extends Account {
     public AccountCreation() {
         super();
         System.out.println(accountType());
+    }
+
+    public AccountCreation(String emailAddress) {
     }
 
     public boolean accountType() {
@@ -247,7 +250,7 @@ public class AccountCreation extends Account {
         } while (true);
     }
 
-    public void createPin() {
+    public boolean createPin() {
         Scanner makePin = new Scanner(System.in);
 
         do {
@@ -261,17 +264,24 @@ public class AccountCreation extends Account {
            try {
                if (newPin.length() == 6) {
                    pin = Integer.parseInt(newPin);
-                   createPassword();
-                   break;
+                   verification = true;
+                   if (pinRestart) {
+                       MainMenu main = new MainMenu();
+                       System.out.println(main);
+                   }
+                   else {
+                       createPassword();
+                       break;
+                   }
                }
            } catch (NumberFormatException e) {
                System.out.println("The pin can only be integers!");
            }
         } while (true);
-        return;
+        return false;
     }
 
-    public  void createPassword() {
+    public boolean createPassword() {
         Scanner makePassword = new Scanner(System.in);
 
         do {
@@ -292,6 +302,6 @@ public class AccountCreation extends Account {
                 continue;
             }
         } while (true);
-        return;
+        return false;
     }
 }

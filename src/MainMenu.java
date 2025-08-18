@@ -25,7 +25,8 @@ public class MainMenu extends Bank {
                 1. Log In
                 2. Create an account
                 3. Settings
-                4. Exit\n
+                4. Exit
+                
                 """ + border + "\n" + border);
            String choice = options.nextLine();
 
