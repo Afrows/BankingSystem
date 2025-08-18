@@ -39,6 +39,7 @@ public class AccountLogIn extends Account {
             System.out.println("Enter your password: ");
             String passwordCheck = pass.nextLine();
                 if (passwordCheck.equals(password)) {
+                    pinVerification();
                     break;
                 }
                 else {
@@ -118,6 +119,11 @@ public class AccountLogIn extends Account {
             String enteredPin = pinEntry.nextLine();
             try {
                 if (enteredPin.equals(pin)) {
+                    depositOrWithdraw();
+                    break;
+                }
+                else if (!verification) {
+                    depositOrWithdraw();
                     break;
                 }
                 else if (pinAttempt == 3) {
@@ -145,12 +151,28 @@ public class AccountLogIn extends Account {
                     2. No
                     """);
             String pinC = pinChoice.nextLine();
-            if (pinC.equals("1") {
+            if (pinC.equals("1")) {
                 AccountCreation newPin = new AccountCreation();
                 pinRestart = true;
                 System.out.println(newPin.createPin());
-
             }
+        } while (true);
+    }
+
+    public static void depositOrWithdraw() {
+        Scanner dow = new Scanner(System.in);
+        Money account = new Money();
+
+        do {
+            System.out.println("Welcome " + customerName + ", Which services would you like to use?\n " +
+                    "1. Deposit\n 2. Withdraw\n 3. Check Balance\n 4. Settings\n 5. Log Out\n 6. Close App\n ");
+            String service = dow.nextLine();
+                switch (Integer.parseInt(service)) {
+                    case 1 -> System.out.println(account.deposit());
+                    case 2 -> System.out.println(account.withdraw());
+                    case 3 -> System.out.println(account.showBalance());
+                    default -> System.out.println("Please type a number for the service you want to use.");
+                }
         } while (true);
     }
 }
