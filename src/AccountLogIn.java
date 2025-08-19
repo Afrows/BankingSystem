@@ -6,15 +6,15 @@ public class AccountLogIn extends Account {
     private static int pinAttempt;
 
     public AccountLogIn(String accountNumber, double accountBalance, String customerName, String emailAddress,
-                        int phoneNumber, String dateOfBirth, String password, int pin, int attempt, boolean pinRestart) {
+                        int phoneNumber, String dateOfBirth, String password, int pin) {
         super(accountNumber, accountBalance, customerName, emailAddress, phoneNumber, dateOfBirth, password, pin);
     }
 
     public AccountLogIn() {
-        System.out.println(logIn());
+
     }
 
-    public static boolean logIn() {
+    public void logIn() {
         Scanner user = new Scanner(System.in);
         Scanner pass = new Scanner(System.in);
         Scanner attemptTry = new Scanner(System.in);
@@ -28,7 +28,6 @@ public class AccountLogIn extends Account {
                 else {
                     System.out.println("This email is not registered in our system.");
                 }
-                    continue;
         } while (true);
 
         for (int i = 0; i < 50; i++) {
@@ -45,7 +44,6 @@ public class AccountLogIn extends Account {
                 else {
                     System.out.println("The password is incorrect");
                     attempt++;
-                    continue;
                 }
         } while (true);
 
@@ -62,26 +60,18 @@ public class AccountLogIn extends Account {
                     String resetPass = attemptTry.nextLine();
 
                     try {
-                        if (resetPass.equals("1")) {
-                            forgotPassword();
-                            break;
+                        switch (Integer.parseInt(resetPass)) {
+                            case 1 -> forgotPassword();
+                            case 2 -> logIn();
                         }
-                        else if (resetPass.equals("2")) {
-                            logIn();
-                            break;
-                        }
-                        else
-                            continue;
                     } catch (NumberFormatException e) {
                         System.out.println("Please enter either 1 or 2.");
                     }
                 } while (true);
-
         }
-        return false;
     }
 
-    public static void forgotPassword() {
+    public void forgotPassword() {
         Scanner forgotP = new Scanner(System.in);
 
         do {
@@ -94,7 +84,7 @@ public class AccountLogIn extends Account {
             try {
                 if (choice.equals("1")) {
                     AccountCreation resetPass = new AccountCreation();
-                    System.out.println(resetPass.createPassword());
+                    resetPass.createPassword();
                     break;
                 }
                 else if (choice.equals("2")) {
@@ -102,15 +92,13 @@ public class AccountLogIn extends Account {
                     System.out.println(main);
                     break;
                 }
-                else
-                    continue;
             } catch (NumberFormatException e) {
                 System.out.println("Please enter either 1 or 2.");
             }
         } while (true);
     }
 
-    public static void pinVerification() {
+    public void pinVerification() {
         Scanner pinEntry = new Scanner(System.in);
 
         if (verification) {
@@ -118,7 +106,7 @@ public class AccountLogIn extends Account {
             System.out.println("Please enter your pin: ");
             String enteredPin = pinEntry.nextLine();
             try {
-                if (enteredPin.equals(pin)) {
+                if (Integer.parseInt(enteredPin) == pin) {
                     depositOrWithdraw();
                     break;
                 }
@@ -132,7 +120,6 @@ public class AccountLogIn extends Account {
                 }
                 else
                     pinAttempt++;
-                continue;
             } catch (NumberFormatException e) {
                 System.out.println("Please enter the digits for your pin.");
                 }
@@ -140,7 +127,7 @@ public class AccountLogIn extends Account {
         }
     }
 
-    public static void pinReset() {
+    public void pinReset() {
         pinAttempt = 0;
         Scanner pinChoice = new Scanner(System.in);
 
@@ -154,7 +141,10 @@ public class AccountLogIn extends Account {
             if (pinC.equals("1")) {
                 AccountCreation newPin = new AccountCreation();
                 pinRestart = true;
-                System.out.println(newPin.createPin());
+                newPin.createPin();
+            }
+            else if (pinC.equals("2")){
+                logIn();
             }
         } while (true);
     }

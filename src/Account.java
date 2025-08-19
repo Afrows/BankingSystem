@@ -15,16 +15,4 @@ public class Account extends Bank {
     public Account() {
         super();
     }
-
-    public boolean has2FA() {
-        return true;
-    }
-
-    public void verification() {
-        return;
-    }
-
-    public void homeAddress() {
-        return;
-    }
 }

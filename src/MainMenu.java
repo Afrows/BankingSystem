@@ -10,58 +10,42 @@ public class MainMenu extends Bank {
     }
 
     public MainMenu() {
-        System.out.println(options());
+        options();
     }
 
-    public boolean options() {
+    public void options() {
         StringBuilder border = new StringBuilder();
         border.append("*".repeat(64));
         Scanner options = new Scanner(System.in);
+        AccountLogIn log = new AccountLogIn();
+        AccountCreation create = new AccountCreation();
 
        do {
            System.out.println(border + "\n" + border +
-                   "\n\n" + """
+                   """
+                \n
                 Welcome to Solace Banking. Please choose an option below.
                 1. Log In
                 2. Create an account
                 3. Settings
-                4. Exit
-                
+                4. Exit\n
                 """ + border + "\n" + border);
            String choice = options.nextLine();
 
            try {
-               if (choice.equals("1")) {
-                   AccountLogIn log = new AccountLogIn();
-                   break;
+               switch (Integer.parseInt(choice)) {
+                   case 1 -> log.logIn();
+                   case 2 -> create.accountType();
+                   case 3 -> System.out.println("Under Maintenance");
+                   case 4 -> exit();
                }
-               else if (choice.equals("2")) {
-                   AccountCreation create = new AccountCreation();
-                   System.out.println(create);
-                   break;
-               }
-               else if (choice.equals("3")) {
-                   System.out.println("Under Maintenance");
-               }
-               else if (choice.equals("4")) {
-                   System.out.println(exit());
-                   break;
-               }
-               else
-                   continue;
            } catch (NumberFormatException e) {
                System.out.println("Please enter a number between 1-4.");
            }
-
-
        } while (true);
-
-        return false;
     }
 
-    public boolean exit() {
-
+    public void exit() {
         System.out.println("Thank you for using our services, Goodbye.");
-        return true;
     }
 }
