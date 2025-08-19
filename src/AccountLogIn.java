@@ -20,21 +20,24 @@ public class AccountLogIn extends Account {
         Scanner attemptTry = new Scanner(System.in);
 
         do {
+            textBorder();
             System.out.println("Enter your username or email: ");
             String userLog = user.nextLine();
                 if (userLog.equalsIgnoreCase(emailAddress)) {
                     break;
                 }
                 else {
+                    textBorder();
                     System.out.println("This email is not registered in our system.");
+                    textBorder();
+                    delay();
                 }
         } while (true);
 
-        for (int i = 0; i < 50; i++) {
-            System.out.println();
-        }
+        spacing();
 
         do {
+            textBorder();
             System.out.println("Enter your password: ");
             String passwordCheck = pass.nextLine();
                 if (passwordCheck.equals(password)) {
@@ -42,58 +45,64 @@ public class AccountLogIn extends Account {
                     break;
                 }
                 else {
+                    textBorder();
                     System.out.println("The password is incorrect");
                     attempt++;
+                    textBorder();
+                    delay();
                 }
         } while (true);
 
-        for (int i = 0; i < 50; i++) {
-            System.out.println();
-        }
+        spacing();
 
         if (attempt == 3) {
                 do {
+                    textBorder();
                     System.out.println("""
                         You have made three attempts, would you like to reset your password?
                         1. Yes, reset password.
                         2. No.""");
                     String resetPass = attemptTry.nextLine();
 
-                    try {
                         switch (Integer.parseInt(resetPass)) {
                             case 1 -> forgotPassword();
                             case 2 -> logIn();
+                            default -> {
+                                textBorder();
+                                System.out.println("Please enter either 1 or 2.");
+                                textBorder();
+                                delay();
+                            }
                         }
-                    } catch (NumberFormatException e) {
-                        System.out.println("Please enter either 1 or 2.");
-                    }
                 } while (true);
-        }
+            }
     }
 
     public void forgotPassword() {
         Scanner forgotP = new Scanner(System.in);
 
         do {
+            textBorder();
             System.out.println("""
                     Would you like to reset your password?
                     1. Yes
                     2. No""");
             String choice = forgotP.nextLine();
-
-            try {
-                if (choice.equals("1")) {
+            switch (Integer.parseInt(choice)) {
+                case 1 -> {
                     AccountCreation resetPass = new AccountCreation();
                     resetPass.createPassword();
-                    break;
                 }
-                else if (choice.equals("2")) {
+                case 2 -> {
                     MainMenu main = new MainMenu();
                     System.out.println(main);
-                    break;
                 }
-            } catch (NumberFormatException e) {
-                System.out.println("Please enter either 1 or 2.");
+                default -> {
+                    textBorder();
+                    System.out.println("Please enter either 1 or 2.");
+                    textBorder();
+                    delay();
+                }
             }
         } while (true);
     }
@@ -103,6 +112,7 @@ public class AccountLogIn extends Account {
 
         if (verification) {
             do {
+                textBorder();
             System.out.println("Please enter your pin: ");
             String enteredPin = pinEntry.nextLine();
             try {
@@ -121,7 +131,10 @@ public class AccountLogIn extends Account {
                 else
                     pinAttempt++;
             } catch (NumberFormatException e) {
+                textBorder();
                 System.out.println("Please enter the digits for your pin.");
+                textBorder();
+                delay();
                 }
             } while (true);
         }
@@ -132,30 +145,33 @@ public class AccountLogIn extends Account {
         Scanner pinChoice = new Scanner(System.in);
 
         do {
+            textBorder();
             System.out.println("""
                     You have made 3 attempts so far, would you like to reset your pin?
                     1. Yes
                     2. No
                     """);
             String pinC = pinChoice.nextLine();
-            if (pinC.equals("1")) {
-                AccountCreation newPin = new AccountCreation();
-                pinRestart = true;
-                newPin.createPin();
-            }
-            else if (pinC.equals("2")){
-                logIn();
+            switch (Integer.parseInt(pinC)) {
+                case 1 -> {
+                    AccountCreation newPin = new AccountCreation();
+                    pinRestart = true;
+                    newPin.createPin();
+                }
+                case 2 -> logIn();
             }
         } while (true);
     }
 
-    public static void depositOrWithdraw() {
+    public void depositOrWithdraw() {
         Scanner dow = new Scanner(System.in);
         Money account = new Money();
 
         do {
+            textBorder();
             System.out.println("Welcome " + customerName + ", Which services would you like to use?\n " +
                     "1. Deposit\n 2. Withdraw\n 3. Check Balance\n 4. Settings\n 5. Log Out\n 6. Close App\n ");
+            textBorder();
             String service = dow.nextLine();
                 switch (Integer.parseInt(service)) {
                     case 1 -> System.out.println(account.deposit());

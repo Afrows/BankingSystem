@@ -13,6 +13,5 @@ public class Account extends Bank {
     }
 
     public Account() {
-        super();
     }
 }

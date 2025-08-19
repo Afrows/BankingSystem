@@ -16,6 +16,27 @@ public class Bank {
 
     }
 
+    public void spacing() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+    }
+
+    public void delay() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void textBorder() {
+        StringBuilder border = new StringBuilder();
+        border.append("*".repeat(64));
+        System.out.println("\n" + border + "\n" + border +
+                "\n");
+    }
+
     public String getAccountNumber() {
         return accountNumber;
     }
@@ -36,16 +57,8 @@ public class Bank {
         return customerName;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
     public String getEmailAddress() {
         return emailAddress;
-    }
-
-    public void setEmail(String emailAddress) {
-        this.emailAddress = emailAddress;
     }
 
     public int getPhoneNumber() {
