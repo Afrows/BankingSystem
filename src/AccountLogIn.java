@@ -166,6 +166,7 @@ public class AccountLogIn extends Account {
     public void depositOrWithdraw() {
         Scanner dow = new Scanner(System.in);
         Money account = new Money();
+        MainMenu exit = new MainMenu();
 
         do {
             textBorder();
@@ -174,9 +175,10 @@ public class AccountLogIn extends Account {
             textBorder();
             String service = dow.nextLine();
                 switch (Integer.parseInt(service)) {
-                    case 1 -> System.out.println(account.deposit());
-                    case 2 -> System.out.println(account.withdraw());
-                    case 3 -> System.out.println(account.showBalance());
+                    case 1 -> account.deposit();
+                    case 2 -> account.withdraw();
+                    case 3 -> account.showBalance();
+                    case 6 -> exit.exit();
                     default -> System.out.println("Please type a number for the service you want to use.");
                 }
         } while (true);

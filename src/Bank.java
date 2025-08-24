@@ -1,7 +1,7 @@
 public class Bank {
 
     private String accountNumber;
-    private double accountBalance;
+    protected double accountBalance;
     protected static  String customerName;
     protected static String emailAddress;
     private int phoneNumber;
@@ -35,6 +35,15 @@ public class Bank {
         border.append("*".repeat(64));
         System.out.println("\n" + border + "\n" + border +
                 "\n");
+    }
+
+    public void loading() throws InterruptedException {
+        String message = "Loading";
+        for (int i = 0; i < 4; i++) {
+                System.out.println("\r" + message + ".".repeat(i));
+                Thread.sleep(500);
+            }
+
     }
 
     public String getAccountNumber() {

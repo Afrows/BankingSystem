@@ -1,24 +1,115 @@
+import java.util.Scanner;
+
 public class Money extends Bank {
 
-    public Money(String accountNumber, double accountBalance, String customerName, String emailAddress, int phoneNumber) {
+    AccountLogIn redo = new AccountLogIn();
+    private double value;
+    private boolean sufficientFunds;
+    protected boolean overdraft;
+    protected double overdraftLimit;
+
+    public Money(String accountNumber, double accountBalance, double value, String customerName, String emailAddress, int phoneNumber) {
         super(accountNumber, accountBalance, customerName, emailAddress, phoneNumber);
+        this.value = value;
     }
 
     public Money() {
+
     }
 
-    public boolean deposit() {
-
-        return false;
+    public void hasSufficientFunds() {
+        if (accountBalance - value < 0) {
+            sufficientFunds = !(accountBalance - value < 0);
+        }
     }
 
-    public boolean withdraw() {
-
-        return false;
+    public void hasOverdraft() {
+        if (overdraft) {
+            overdraftLimit = -800;
+            sufficientFunds = !(accountBalance - value < overdraftLimit);
+        }
     }
 
-    public boolean showBalance() {
+    public void deposit() {
+        Scanner depositQ = new Scanner(System.in);
+        Scanner depositM = new Scanner(System.in);
+         do {
+             spacing();
+             textBorder();
+             System.out.println("""
+                     Would you like to deposit?
+                     1. Yes
+                     2. No\n""");
+             String depositA = depositQ.nextLine();
+             try {
+             if (Integer.parseInt(depositA) == 1) {
+                 System.out.println("How much would like to deposit?");
+                 value = depositM.nextDouble();
+                 if (value > 0) {
+                     accountBalance = value++;
+                     loading();
+                     System.out.println("You have successfully deposited £" + value + ". Your current balance now is £" + accountBalance);
+                     delay();
+                 }
+                 else {
+                     System.out.println("You can't deposit with a number below 0");
+                     continue;
+                 }
 
-        return false;
+                 value = 0;
+                 break;
+             } else if (depositA.equals("2")) {
+                 redo.depositOrWithdraw();
+             }
+             } catch (NumberFormatException e) {
+                 System.out.println("Please enter either 1 or 2");
+             } catch (InterruptedException e) {
+                 throw new RuntimeException(e);
+             }
+         } while (true);
+    }
+
+    public void withdraw() {
+        Scanner withdrawQ = new Scanner(System.in);
+        Scanner withdrawM = new Scanner(System.in);
+        hasOverdraft();
+        hasSufficientFunds();
+        do {
+            spacing();
+            textBorder();
+            System.out.println("""
+                    Would you like to withdraw?
+                    1. Yes
+                    2. No""");
+            String withdrawA = withdrawQ.nextLine();
+            try {
+                if (Integer.parseInt(withdrawA) == 1 && Integer.parseInt(withdrawA) < 0) {
+                    System.out.println("How much would you like to withdraw?");
+                    value = withdrawM.nextDouble();
+                    if (sufficientFunds || overdraft) {
+                        accountBalance = value--;
+                    }
+                    else {
+                        System.out.println("You don't have enough money to withdraw that amount.");
+                        continue;
+                    }
+                    loading();
+                    System.out.println("You have successfully withdrew £" + value + ". Your current balance now is £" + accountBalance);
+                    delay();
+                    value = 0;
+                    break;
+                    }
+                } catch (NumberFormatException e) {
+                System.out.println("Please press either 1 or 2");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        } while (true);
+
+    }
+
+    public void showBalance() {
+        System.out.println("You have £" + accountBalance + " in your account.");
+        delay();
     }
 }
