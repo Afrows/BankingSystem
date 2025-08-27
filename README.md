@@ -10,6 +10,6 @@ security features and a functional logging system.
 ## Getting Started
 
 ### Dependencies 
-This project requires a Java Development Kit to run. A common version is [OpenJDK](https://openjdk.org)<br> 17 or 21.
-An IDE also is need to view and run the code, as it was made with [InteliJ Idea](https://www.jetbrains.com/idea/#)<br> I recommend installing it.
+This project requires a Java Development Kit to run. A common version is [OpenJDK](https://openjdk.org) 17 or 21.
+An IDE also is need to view and run the code, as it was made with [InteliJ Idea](https://www.jetbrains.com/idea/#) I recommend installing it.
 Ensure you have [Git](https://git-scm.com/downloads) installed aswell.
