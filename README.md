@@ -11,5 +11,14 @@ security features and a functional logging system.
 
 ### Dependencies 
 This project requires a Java Development Kit to run. A common version is [OpenJDK](https://openjdk.org) 17 or 21.
-An IDE also is need to view and run the code, as it was made with [InteliJ Idea](https://www.jetbrains.com/idea/#) I recommend installing it.
+An IDE also is need to view and run the code, as it was made with [IntelliJ IDEA](https://www.jetbrains.com/idea/#) I recommend installing it.
 Ensure you have [Git](https://git-scm.com/downloads) installed aswell.
+
+### Setup
+Clone the repository: https://github.com/Afrows/BankingSystem
+Open the project in IntelliJ IDEA
+If you use Maven or Gradle, let IntelliJ import dependencies automatically.
+Run 'Main.Java' from the 'src' folder
+
+## Licencse
+This project is licensed under the MIT Liscense.
