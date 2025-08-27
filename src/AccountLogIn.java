@@ -167,6 +167,7 @@ public class AccountLogIn extends Account {
         Scanner dow = new Scanner(System.in);
         Money account = new Money();
         MainMenu exit = new MainMenu();
+        Settings settings = new Settings();
 
         do {
             textBorder();
@@ -178,6 +179,8 @@ public class AccountLogIn extends Account {
                     case 1 -> account.deposit();
                     case 2 -> account.withdraw();
                     case 3 -> account.showBalance();
+                    case 4 -> settings.settings();
+                    case 5 -> exit.options();
                     case 6 -> exit.exit();
                     default -> System.out.println("Please type a number for the service you want to use.");
                 }

@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Money extends Bank {
 
-    AccountLogIn redo = new AccountLogIn();
     private double value;
     private boolean sufficientFunds;
     protected boolean overdraft;
@@ -31,6 +30,7 @@ public class Money extends Bank {
     }
 
     public void deposit() {
+        AccountLogIn redo = new AccountLogIn();
         Scanner depositQ = new Scanner(System.in);
         Scanner depositM = new Scanner(System.in);
          do {
@@ -109,7 +109,9 @@ public class Money extends Bank {
     }
 
     public void showBalance() {
+        AccountLogIn redo = new AccountLogIn();
         System.out.println("You have £" + accountBalance + " in your account.");
         delay();
+        redo.depositOrWithdraw();
     }
 }

@@ -132,32 +132,33 @@ public class AccountCreation extends Account {
 
     public void dobInformation() {
         Scanner dob = new Scanner(System.in);
-
         do {
             spacing();
             textBorder();
             System.out.println("Please enter your date of birth in a DD/MM/YYYY format: ");
             dateOfBirth = dob.nextLine();
 
-            if (dateOfBirth.contains("/") && dateOfBirth.length() == 10) {
+            if (dateOfBirth.contains("/") && dateOfBirth.length() == 10 && Integer.parseInt(dateOfBirth.substring(6)) > 1909 &&
+                    Integer.parseInt(dateOfBirth.substring(6)) < 2025-17) {
                 int age = (2025 - Integer.parseInt(dateOfBirth.substring(6)));
                 System.out.println("Great, you are " + age + " years old.");
                 delay();
                 emailInformation();
                 break;
             }
+            else {
+                System.out.println("Please enter your date of birth in a DD/MM/YYYY format or a date after the year 1909. The minimum age is 18 to register.");
+            }
         } while (true);
     }
 
     public void emailInformation() {
         Scanner email = new Scanner(System.in);
-
         do {
             spacing();
             textBorder();
             System.out.println("Please enter your email address: ");
             emailAddress = email.nextLine();
-
             {
                 if (emailAddress.contains("@gmail") || emailAddress.contains("@hotmail")
                         || emailAddress.contains("@outlook") || emailAddress.contains("@Yahoo")) {

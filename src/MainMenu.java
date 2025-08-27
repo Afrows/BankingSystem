@@ -16,6 +16,7 @@ public class MainMenu extends Bank {
         Scanner options = new Scanner(System.in);
         AccountLogIn log = new AccountLogIn();
         AccountCreation create = new AccountCreation();
+        Settings setting = new Settings();
 
        do {
            textBorder();
@@ -31,7 +32,7 @@ public class MainMenu extends Bank {
                switch (Integer.parseInt(choice)) {
                    case 1 -> log.logIn();
                    case 2 -> create.accountType();
-                   case 3 -> System.out.println("Under Maintenance");
+                   case 3 -> setting.mainMenuSettings();
                    case 4 -> exit();
                    default -> {
                textBorder();
