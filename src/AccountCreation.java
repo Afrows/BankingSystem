@@ -4,6 +4,11 @@ public class AccountCreation extends Account {
 
     private String account;
 
+    MainMenu menu;
+    public AccountCreation(MainMenu menu) {
+        this.menu = menu;
+    }
+
     public AccountCreation(String accountNumber, double accountBalance, String customerName,
                            String emailAddress, int phoneNumber, String dateOfBirth, String password, String account, int pin) {
         super(accountNumber, accountBalance, customerName, emailAddress, phoneNumber, dateOfBirth, password, pin);
@@ -148,6 +153,7 @@ public class AccountCreation extends Account {
             }
             else {
                 System.out.println("Please enter your date of birth in a DD/MM/YYYY format or a date after the year 1909. The minimum age is 18 to register.");
+                delay();
             }
         } while (true);
     }
@@ -242,10 +248,8 @@ public class AccountCreation extends Account {
             textBorder();
             System.out.println("Please create a password: ");
             password = makePassword.nextLine();
-
             if (password.length() > 7) {
-                MainMenu main = new MainMenu();
-                System.out.println(main);
+                menu.options();
                 break;
             }
             else {

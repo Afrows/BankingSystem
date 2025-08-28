@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Money extends Bank {
+    AccountLogIn redo = new AccountLogIn();
 
     private double value;
     private boolean sufficientFunds;
@@ -30,7 +31,6 @@ public class Money extends Bank {
     }
 
     public void deposit() {
-        AccountLogIn redo = new AccountLogIn();
         Scanner depositQ = new Scanner(System.in);
         Scanner depositM = new Scanner(System.in);
          do {
@@ -46,7 +46,7 @@ public class Money extends Bank {
                  System.out.println("How much would like to deposit?");
                  value = depositM.nextDouble();
                  if (value > 0) {
-                     accountBalance = value++;
+                     this.accountBalance = value;
                      loading();
                      System.out.println("You have successfully deposited £" + value + ". Your current balance now is £" + accountBalance);
                      delay();
@@ -59,6 +59,7 @@ public class Money extends Bank {
                  value = 0;
                  break;
              } else if (depositA.equals("2")) {
+                 AccountLogIn redo = new AccountLogIn();
                  redo.depositOrWithdraw();
              }
              } catch (NumberFormatException e) {
@@ -87,7 +88,7 @@ public class Money extends Bank {
                     System.out.println("How much would you like to withdraw?");
                     value = withdrawM.nextDouble();
                     if (sufficientFunds || overdraft) {
-                        accountBalance = value--;
+                        accountBalance = accountBalance - value;
                     }
                     else {
                         System.out.println("You don't have enough money to withdraw that amount.");
@@ -109,8 +110,7 @@ public class Money extends Bank {
     }
 
     public void showBalance() {
-        AccountLogIn redo = new AccountLogIn();
-        System.out.println("You have £" + accountBalance + " in your account.");
+        System.out.println("You have £" + this.accountBalance + " in your account.");
         delay();
         redo.depositOrWithdraw();
     }

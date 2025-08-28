@@ -165,9 +165,7 @@ public class AccountLogIn extends Account {
 
     public void depositOrWithdraw() {
         Scanner dow = new Scanner(System.in);
-        Money account = new Money();
-        MainMenu exit = new MainMenu();
-        Settings settings = new Settings();
+
 
         do {
             textBorder();
@@ -175,6 +173,9 @@ public class AccountLogIn extends Account {
                     "1. Deposit\n 2. Withdraw\n 3. Check Balance\n 4. Settings\n 5. Log Out\n 6. Close App\n ");
             textBorder();
             String service = dow.nextLine();
+            Money account = new Money();
+            MainMenu exit = new MainMenu();
+            Settings settings = new Settings();
                 switch (Integer.parseInt(service)) {
                     case 1 -> account.deposit();
                     case 2 -> account.withdraw();

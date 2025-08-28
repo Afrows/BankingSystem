@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class Settings extends Bank {
+    Account account = new Account();
+    AccountCreation create = new AccountCreation();
 
     private String softwareVersion;
 
@@ -10,14 +12,16 @@ public class Settings extends Bank {
     }
 
     public Settings() {
+
+    }
+
+    private MainMenu menu;
+    public Settings(MainMenu menu) {
+        this.menu = menu;
     }
 
     public void mainMenuSettings() {
-        MainMenu menu = new MainMenu();
-        Account account = new Account();
-        AccountCreation create = new AccountCreation();
         Scanner options = new Scanner(System.in);
-
         do {
             textBorder();
             System.out.println("""
@@ -27,6 +31,7 @@ public class Settings extends Bank {
                     4. Exit""");
             String settingsChoice = options.nextLine();
             switch (Integer.parseInt(settingsChoice)) {
+
                 case 1 -> passwordChange();
                 case 2 -> System.out.println(softwareVersion);
                 case 3 -> menu.options();
@@ -40,8 +45,6 @@ public class Settings extends Bank {
     }
 
     public void settings() {
-        MainMenu menu = new MainMenu();
-        AccountCreation create = new AccountCreation();
         Scanner options = new Scanner(System.in);
 
         do {
@@ -54,6 +57,7 @@ public class Settings extends Bank {
                     5. Log out
                     6. Exit""");
             String settingsChoice = options.nextLine();
+            AccountCreation create = new AccountCreation();
             switch (Integer.parseInt(settingsChoice)) {
                 case 1 -> create.createPassword();
                 case 2 -> personalDetails();
@@ -85,8 +89,6 @@ public class Settings extends Bank {
     }
 
     public void passwordChange() {
-        Account account = new Account();
-        AccountCreation create = new AccountCreation();
         Scanner emailAuthentication = new Scanner (System.in);
         Scanner dobVerification = new Scanner (System.in);
         do {
@@ -115,7 +117,6 @@ public class Settings extends Bank {
     }
 
     public void updateDetails() {
-        AccountCreation create = new AccountCreation();
         Scanner changeDetails = new Scanner(System.in);
 
         do {
@@ -139,10 +140,10 @@ public class Settings extends Bank {
     }
 
     public void changeEmail() {
-        Scanner currentEmail = new Scanner(System.in);
-        Scanner newEmail = new Scanner(System.in);
         do {
             System.out.println("Please enter your current email: ");
+            Scanner currentEmail = new Scanner(System.in);
+            Scanner newEmail = new Scanner(System.in);
             String currentE = currentEmail.nextLine();
             if (currentE.equalsIgnoreCase(emailAddress)) {
                 System.out.println("Enter your new email: ");
@@ -168,7 +169,6 @@ public class Settings extends Bank {
     }
 
     public void changeDOB() {
-        Account account = new Account();
         Scanner currentDOB = new Scanner(System.in);
         Scanner newDOB = new Scanner(System.in);
         do {
