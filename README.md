@@ -20,5 +20,8 @@ Open the project in IntelliJ IDEA
 If you use Maven or Gradle, let IntelliJ import dependencies automatically.
 Run 'Main.Java' from the 'src' folder
 
+## Version
+v1.0 - Unstable release, bug fixes soon
+
 ## Licencse
 This project is licensed under the MIT Liscense.
