@@ -1,15 +1,11 @@
 public class Bank {
 
-    private String accountNumber;
     protected double accountBalance;
-    protected static  String customerName;
+    protected static String customerName;
     protected static String emailAddress;
-    private int phoneNumber;
 
-    public Bank(String accountNumber, double accountBalance, String customerName, String emailAddress, int phoneNumber) {
-        this.accountNumber = accountNumber;
+    public Bank(double accountBalance) {
         this.accountBalance = accountBalance;
-        this.phoneNumber = phoneNumber;
     }
 
     public Bank() {
@@ -40,41 +36,9 @@ public class Bank {
     public void loading() throws InterruptedException {
         String message = "Loading";
         for (int i = 0; i < 4; i++) {
-                System.out.println("\r" + message + ".".repeat(i));
-                Thread.sleep(500);
-            }
+            System.out.println("\r" + message + ".".repeat(i));
+            Thread.sleep(500);
+        }
 
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public double getAccountBalance() {
-        return accountBalance;
-    }
-
-    public void setAccountBalance(double accountBalance) {
-        this.accountBalance = accountBalance;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 }

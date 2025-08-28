@@ -1,16 +1,23 @@
 import java.util.Scanner;
 
 public class Money extends Bank {
-    AccountLogIn redo = new AccountLogIn();
+
+    private AccountLogIn redo;
+    public Money(AccountLogIn redo) {
+        this.redo = redo;
+    }
 
     private double value;
     private boolean sufficientFunds;
     protected boolean overdraft;
     protected double overdraftLimit;
 
-    public Money(String accountNumber, double accountBalance, double value, String customerName, String emailAddress, int phoneNumber) {
-        super(accountNumber, accountBalance, customerName, emailAddress, phoneNumber);
+    public Money(double accountBalance, double value, boolean sufficientFunds, boolean overdraft, double overdraftLimit) {
+        super(accountBalance);
         this.value = value;
+        this.sufficientFunds = sufficientFunds;
+        this.overdraft = overdraft;
+        this.overdraftLimit = overdraftLimit;
     }
 
     public Money() {
@@ -59,7 +66,6 @@ public class Money extends Bank {
                  value = 0;
                  break;
              } else if (depositA.equals("2")) {
-                 AccountLogIn redo = new AccountLogIn();
                  redo.depositOrWithdraw();
              }
              } catch (NumberFormatException e) {

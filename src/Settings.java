@@ -6,13 +6,11 @@ public class Settings extends Bank {
 
     private String softwareVersion;
 
-    public Settings(String accountNumber, double accountBalance, String customerName, String emailAddress, int phoneNumber, String softwareVersion) {
-        super(accountNumber, accountBalance, customerName, emailAddress, phoneNumber);
-        softwareVersion = "v1.0";
-    }
-
-    public Settings() {
-
+    public Settings(double accountBalance, Account account, AccountCreation create, String softwareVersion) {
+        super(accountBalance);
+        this.account = account;
+        this.create = create;
+        this.softwareVersion = softwareVersion;
     }
 
     private MainMenu menu;
@@ -31,7 +29,6 @@ public class Settings extends Bank {
                     4. Exit""");
             String settingsChoice = options.nextLine();
             switch (Integer.parseInt(settingsChoice)) {
-
                 case 1 -> passwordChange();
                 case 2 -> System.out.println(softwareVersion);
                 case 3 -> menu.options();
@@ -46,7 +43,6 @@ public class Settings extends Bank {
 
     public void settings() {
         Scanner options = new Scanner(System.in);
-
         do {
             textBorder();
             System.out.println("""
@@ -57,7 +53,6 @@ public class Settings extends Bank {
                     5. Log out
                     6. Exit""");
             String settingsChoice = options.nextLine();
-            AccountCreation create = new AccountCreation();
             switch (Integer.parseInt(settingsChoice)) {
                 case 1 -> create.createPassword();
                 case 2 -> personalDetails();
@@ -118,7 +113,6 @@ public class Settings extends Bank {
 
     public void updateDetails() {
         Scanner changeDetails = new Scanner(System.in);
-
         do {
             System.out.println("""
                     Which details would you like to change?
@@ -180,7 +174,7 @@ public class Settings extends Bank {
                 System.out.println("""
                         Enter your new date of birth.
                         Please note that you have a limit on how many times you can change your date of birth.
-                        Number of changes left: """ + changesLeft);
+                        Number of changes left:""" + changesLeft);
                 String newD = newDOB.nextLine();
                 if ((newD.contains("/") && newD.length() == 10 && Integer.parseInt(newD.substring(6)) > 1909 &&
                         Integer.parseInt(newD.substring(6)) < 2025-17)) {

@@ -9,9 +9,8 @@ public class AccountCreation extends Account {
         this.menu = menu;
     }
 
-    public AccountCreation(String accountNumber, double accountBalance, String customerName,
-                           String emailAddress, int phoneNumber, String dateOfBirth, String password, String account, int pin) {
-        super(accountNumber, accountBalance, customerName, emailAddress, phoneNumber, dateOfBirth, password, pin);
+    public AccountCreation(double accountBalance, String dateOfBirth, String account) {
+        super(accountBalance, dateOfBirth);
         this.account = account;
     }
 
@@ -31,7 +30,6 @@ public class AccountCreation extends Account {
                     """);
             textBorder();
             String type = accountType.nextLine();
-
                 switch (Integer.parseInt(type)) {
                     case 1 -> currentAccount();
                     case 2 -> savingsAccount();
@@ -60,7 +58,6 @@ public class AccountCreation extends Account {
                     2. No""");
             textBorder();
             String verify = verifyChoiceC.nextLine();
-
             try {
                 switch (Integer.parseInt(verify)) {
                     case 1 -> {
@@ -117,10 +114,9 @@ public class AccountCreation extends Account {
             System.out.println("Thank you for confirming that you want a " +
                     account + ".\nPlease enter your full name: ");
             customerName = name.nextLine();
-
             try {
                 if (customerName.isBlank()) {
-                    continue;
+                    nameInformation();
                 } else if (customerName.length() > 3) {
                     dobInformation();
                     break;
@@ -142,7 +138,6 @@ public class AccountCreation extends Account {
             textBorder();
             System.out.println("Please enter your date of birth in a DD/MM/YYYY format: ");
             dateOfBirth = dob.nextLine();
-
             if (dateOfBirth.contains("/") && dateOfBirth.length() == 10 && Integer.parseInt(dateOfBirth.substring(6)) > 1909 &&
                     Integer.parseInt(dateOfBirth.substring(6)) < 2025-17) {
                 int age = (2025 - Integer.parseInt(dateOfBirth.substring(6)));
@@ -217,7 +212,6 @@ public class AccountCreation extends Account {
             textBorder();
             System.out.println("Please enter a 6 digit pin: ");
             String newPin = makePin.nextLine();
-
            try {
                if (newPin.length() == 6) {
                    pin = Integer.parseInt(newPin);
@@ -242,7 +236,6 @@ public class AccountCreation extends Account {
 
     public void createPassword() {
         Scanner makePassword = new Scanner(System.in);
-
         do {
             spacing();
             textBorder();

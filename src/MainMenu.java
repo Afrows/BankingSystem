@@ -2,15 +2,9 @@ import java.util.Scanner;
 
 public class MainMenu extends Bank {
     Scanner options = new Scanner(System.in);
-    AccountLogIn log = new AccountLogIn();
+    AccountLogIn log = new AccountLogIn(this);
     AccountCreation create = new AccountCreation(this);
     Settings settings = new Settings(this);
-
-    public MainMenu(String accountNumber, double accountBalance, String customerName,
-                    String emailAddress, int phoneNumber) {
-        super(accountNumber, accountBalance, customerName, emailAddress, phoneNumber);
-
-    }
 
     public MainMenu() {
     }

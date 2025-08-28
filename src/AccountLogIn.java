@@ -2,15 +2,31 @@ import java.util.Scanner;
 
 public class AccountLogIn extends Account {
 
+    private MainMenu menu;
+    public AccountLogIn(MainMenu menu) {
+        this.menu = menu;
+    }
+
+    private AccountCreation newPin;
+    public AccountLogIn(AccountCreation newPin) {
+        this.newPin = newPin;
+    }
+
+    private Money account;
+    public AccountLogIn(Money account) {
+        this.account = account;
+    }
+
+    private Settings settings;
+    public AccountLogIn(Settings settings) {
+        this.settings = settings;
+    }
+
     private static int attempt;
     private static int pinAttempt;
 
-    public AccountLogIn(String accountNumber, double accountBalance, String customerName, String emailAddress,
-                        int phoneNumber, String dateOfBirth, String password, int pin) {
-        super(accountNumber, accountBalance, customerName, emailAddress, phoneNumber, dateOfBirth, password, pin);
-    }
-
-    public AccountLogIn() {
+    public AccountLogIn(double accountBalance, String dateOfBirth) {
+        super(accountBalance, dateOfBirth);
 
     }
 
@@ -93,10 +109,7 @@ public class AccountLogIn extends Account {
                     AccountCreation resetPass = new AccountCreation();
                     resetPass.createPassword();
                 }
-                case 2 -> {
-                    MainMenu main = new MainMenu();
-                    System.out.println(main);
-                }
+                case 2 -> menu.options();
                 default -> {
                     textBorder();
                     System.out.println("Please enter either 1 or 2.");
@@ -154,7 +167,6 @@ public class AccountLogIn extends Account {
             String pinC = pinChoice.nextLine();
             switch (Integer.parseInt(pinC)) {
                 case 1 -> {
-                    AccountCreation newPin = new AccountCreation();
                     pinRestart = true;
                     newPin.createPin();
                 }
@@ -165,24 +177,19 @@ public class AccountLogIn extends Account {
 
     public void depositOrWithdraw() {
         Scanner dow = new Scanner(System.in);
-
-
         do {
             textBorder();
             System.out.println("Welcome " + customerName + ", Which services would you like to use?\n " +
                     "1. Deposit\n 2. Withdraw\n 3. Check Balance\n 4. Settings\n 5. Log Out\n 6. Close App\n ");
             textBorder();
             String service = dow.nextLine();
-            Money account = new Money();
-            MainMenu exit = new MainMenu();
-            Settings settings = new Settings();
                 switch (Integer.parseInt(service)) {
                     case 1 -> account.deposit();
                     case 2 -> account.withdraw();
                     case 3 -> account.showBalance();
                     case 4 -> settings.settings();
-                    case 5 -> exit.options();
-                    case 6 -> exit.exit();
+                    case 5 -> menu.options();
+                    case 6 -> menu.exit();
                     default -> System.out.println("Please type a number for the service you want to use.");
                 }
         } while (true);
